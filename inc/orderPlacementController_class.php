@@ -2,10 +2,10 @@
 class orderPlacementController extends orderPlacementEntity{
     protected function createOrder($array){
         // Initialize variables
-        if (isset($array['promo'])){
-            $promo = $array['promo'];    
-        } else {
+        if ($array['promo']==""){
             $promo = 'nopromo';
+        } else {
+            $promo = $array['promo']; 
         }
                     
         $comment = $array['comment'];  
@@ -38,10 +38,10 @@ class orderPlacementController extends orderPlacementEntity{
             }  
         }
 
-        // Insert each item into the order ID.
+        //Insert each item into the order ID.
         $this->insertOrderItem($sql_orderItem);
 
-        // Return order number.
+        //Return order number.
         return $orderId;
     } 
 
