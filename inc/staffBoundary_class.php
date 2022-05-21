@@ -3,6 +3,13 @@ class staffBoundary extends staffController{
     public function displayOpenOrders(){
         // Retrieve open orders.
         $datas = $this->retrieveOpenOrders();
+ 
+        // If there is no open orders, terminate function.
+        if ($datas == 0){
+            echo "<center>There are no open orders currently.</center>";
+            echo "<br>";
+            return 0;
+        }
         
         // Display each open orders separately.
         for ($i=0; $i<count($datas); $i++){
@@ -20,6 +27,8 @@ class staffBoundary extends staffController{
                             echo "<td style='width:23%'>";
                                 echo "<b><center>Table: " . $datas[$i]['table_code'] . "</b></center>";
                             echo "</td>";
+
+                            // Print customer name
                             echo "<td style='text-align:right;width:34%'>";
                                 echo "<b>" . $datas[$i]['Name'] . "</b>";
                             echo "</td>";
